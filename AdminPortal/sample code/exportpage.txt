@@ -1,0 +1,87 @@
+ try
+            {
+
+                string connectionString = ConfigurationManager.ConnectionStrings["dis"].ConnectionString; // Replace with your SQL Server connection string
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+
+                    connection.Open();
+                    // Check if the 'from' and 'to' values are the same
+                    if (from.Text.Equals(To.Text, StringComparison.OrdinalIgnoreCase))
+                    {
+                        // Show error message to the user
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('From and To values cannot be the same.');", true);
+
+                    }
+                    else
+                    {
+                        // Validate Quantity as integer
+                        int quantity;
+                        if (!int.TryParse(Quantity.Text, out quantity))
+                        {
+                            // Show error message to the user
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Quantity must be an integer.');", true);
+
+                        }
+                        else
+                        {
+                            SqlCommand command = new SqlCommand("AddExport", connection); // Replace with your stored procedure name
+                            command.CommandType = CommandType.StoredProcedure;
+
+                            // Add parameters to the stored procedure
+                            command.Parameters.AddWithValue("@ProductName", productname.Text);
+                            command.Parameters.AddWithValue("@Quantity", quantity);
+                            command.Parameters.AddWithValue("@FromLocation", from.Text);
+                            command.Parameters.AddWithValue("@ToLocation", To.Text);
+
+                            // Add an output parameter for the generated unique code
+                            SqlParameter codeParameter = new SqlParameter("@GeneratedCode", SqlDbType.NVarChar, 50);
+                            codeParameter.Direction = ParameterDirection.Output;
+                            command.Parameters.Add(codeParameter);
+                            // Upload the file to the server
+                            if (FileUpload2.HasFile)
+                            {
+                                byte[] fileData = FileUpload2.FileBytes;
+                                command.Parameters.AddWithValue("@FileData", fileData);
+                                command.Parameters.AddWithValue("@FileName", FileUpload2.FileName);
+                                // Execute the stored procedure
+                               
+                            }
+                            else
+                            {
+                                // Show success message to the user
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('please upload the product image');", true);
+                                return;
+                            }
+                            command.ExecuteNonQuery();
+                            int x = command.ExecuteNonQuery();
+                            if (x == 0)
+                            {
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('unsuccessful!');", true);
+                            }
+                            // Retrieve the generated unique code from the output parameter
+                            string generatedCode = codeParameter.Value.ToString();
+
+                            // Show success message to the user
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Order Booked successfully!');", true);
+
+                            // Reset form fields
+                            productname.Text = "";
+                            Quantity.Text = "";
+                            from.Text = "";
+                            To.Text = "";
+
+                            // Display the generated unique code on the page
+                            lblGeneratedCode.Text = generatedCode;
+                        }
+                    }
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", $"alert('Error: {ex.Message}');", true);
+            }
+
+        }

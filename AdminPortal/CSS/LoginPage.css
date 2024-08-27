@@ -1,0 +1,39 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url('../Images/shippic.jpg');
+    background-size: cover;
+    overflow: hidden;
+}
+
+.track-section {
+    position: fixed;
+    margin: auto;
+    height: auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgba(89, 89, 89, 0.6);
+    width: auto;
+    box-shadow: 6px 7px 7px 2px rgba(0,0,0,0.5);
+    font: 14px Arial, Helvetica, sans-serif;
+}
+
+.login-section {
+    position: fixed;
+    margin:auto;
+    height:auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgba(89, 89, 89, 0.6);
+    width: auto;
+    box-shadow: 6px 7px 7px 2px rgba(0,0,0,0.5);
+    font: 14px Arial, Helvetica, sans-serif;
+}
+

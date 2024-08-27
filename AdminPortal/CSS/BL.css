@@ -1,0 +1,114 @@
+﻿
+.maindiv {
+    max-height: max;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(169, 169, 169, 0.8);
+}
+
+
+
+#t1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    margin-bottom: -40px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.maindiv label {
+    display: block;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.maindiv input[type="text"] {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.maindiv button {
+    display: block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: cadetblue;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    width: 50px;
+}
+
+.maindiv img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 10px;
+}
+
+.maindiv .row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.scrollable-textbox {
+    height: 50px; /* Adjust the height as needed */
+    overflow-y: visible;
+}
+
+.RandomNumberLabel {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font: 12px;
+}
+
+.Button1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 5px;
+    background-color: #007bff;
+    margin: 7px;
+    width: 100px;
+    left: 50%;
+    margin-bottom: -5px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-textbox {
+    width: max-content;
+}
+
+.DropDownbox {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+    .button-container .button {
+        display: inline-block;
+        margin: 5px;
+    }

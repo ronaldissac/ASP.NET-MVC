@@ -1,0 +1,323 @@
+﻿/* style.css customerpage */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url('../Image/shippic.jpg');
+    background-repeat: no-repeat;
+    background-size:cover; /* Adjust as needed */
+}
+
+/*body {
+    background-image: url('shippic.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    padding: 0;
+    margin: auto;
+    
+}*/
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Rest of your CSS styles */
+
+.header {
+    display: flex;
+    background-color: transparent;
+    padding: 10px;
+}
+
+    .header img {
+        float: right;
+    }
+
+    .header h1 {
+        margin-left: 60%;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: royalblue;
+        padding: 10px;
+        width: 100%;
+        margin-top: -5px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+
+.details-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.track-section {
+    position: fixed;
+    opacity: 0.9;
+    top: 80px;
+    height: 200px;
+    width: 350px;
+    margin-left: -5px;
+    background-color: lightsteelblue;
+    border: 1px solid; /* light blue accent */
+    padding: 20px;
+    border-radius: 5px;
+    outline-style: auto;
+    outline-color: lightblue;
+}
+
+.textbox {
+    position: center;
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 20px;
+}
+
+.button {
+    position: center;
+    left: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.login-section {
+    position: fixed;
+    opacity: 0.9;
+    top: 80px;
+    right: 100px;
+    height: 325px;
+    width: 350px;
+    background-color: lightsteelblue;
+    border: 1px solid; /* light blue accent */
+    padding: 20px;
+    border-radius: 5px;
+    outline-style: auto;
+    outline-color: lightblue;
+}
+
+    .login-section input[type="text"],
+    .login-section input[type="password"] {
+        margin-top: -5px;
+        margin-bottom: -5px;
+        border-radius: 5px;
+        height: 30px;
+        width: 200px;
+        position: relative;
+        left: 50px;
+        padding-left: 20px; /* Adjust the value to move the placeholder text */
+        box-sizing: border-box; /* Make sure the padding doesn't increase the width of the input box */
+        background-position: left center; /* Move the background image (i.e. placeholder text) to the left center */
+        background-repeat: no-repeat; /* Don't repeat the background image */
+    }
+
+
+.row {
+    margin-bottom: 10px;
+}
+
+.dropdown {
+    padding: 8px;
+    right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100px;
+    margin: 10px;
+    position: center;
+}
+
+.footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+
+.gridview-container {
+    position: fixed;
+    opacity: 0.9;
+    top: 60px;
+    height: 270px;
+    width: 600px;
+    margin-top: 0px;
+    background-color: whitesmoke;
+    margin-top: 250px;
+    margin-left: -1%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.footer1 {
+    bottom: 50px;
+    color: green;
+}
+
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+.form {
+    position: absolute;
+    opacity: 0.9;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    background: #FFF;
+}
+
+    .form.signup {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+.forms.show-signup .form.login {
+    opacity: 0;
+    pointer-events: none;
+}
+
+header {
+    font-size: 28px;
+    font-weight: 600;
+    color: #232837;
+    text-align: center;
+}
+
+form {
+  
+}
+
+.form .field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+
+.field input,
+.field button {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+
+.field input {
+    outline: none;
+    padding: 0 15px;
+    border: 1px solid#CACACA;
+}
+
+    .field input:focus {
+        border-bottom-width: 2px;
+    }
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.field button {
+    color: #fff;
+    background-color: #0171d3;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .field button:hover {
+        background-color: #016dcb;
+    }
+
+.form-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .form-link span,
+    .form-link a {
+        font-size: 14px;
+        font-weight: 400;
+        color: #232836;
+    }
+
+.form a {
+    color: #0171d3;
+    text-decoration: none;
+}
+
+.form-content a:hover {
+    text-decoration: underline;
+}
+
+.line {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #d4d4d4;
+}
+
+    .line::before {
+        content: 'Or';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #FFF;
+        color: #8b8b8b;
+        padding: 0 15px;
+    }
+
+.media-options a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+

@@ -1,0 +1,155 @@
+﻿.maindiv {
+    max-height: auto;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(169, 169, 169, 0.8);
+}
+#t1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    margin-bottom: -40px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.maindiv label {
+    display: block;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.maindiv input[type="text"] {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.maindiv button {
+    display: block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: cadetblue;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    width: 15px;
+}
+
+/*.img {*/
+    /*display: flex;*/
+    /*justify-content: center;
+    align-items: center;*/
+    /*height: 100%;
+    margin-bottom: 20px;
+    right: 50%;
+}
+
+    .img img {
+        min-height: 20%;
+        min-width: 20%;
+        max-width: 25%;
+        max-height: 100px;
+        object-fit: contain;
+    }*/
+
+.maindiv .row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.scrollable-textbox {
+    height: 100px; /* Adjust the height as needed */
+    overflow-y: auto;
+    padding: px;
+    width: 100px;
+}
+
+.RandomNumberLabel {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font: 12px;
+}
+
+.Button1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    width: 100px;
+    right: -45%;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    top:-20px
+}
+
+.DropDownbox {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.payment-select {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    align-items:center;
+    margin-bottom:-60px;
+}
+   
+.Button2 {
+   
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    width: 100px;
+    height:30px;
+    color: white;
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom:20px;
+    margin-left:4px;
+}
+.pay {
+    margin-top:20PX;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background-color:#f7f7f7;
+    height:400px;
+    width:450px;
+}
+.img {
+    display: flex;
+    align-content: end;
+    margin-bottom: 50px;
+}
+
+.payment-section{
+    margin-bottom:-70px;
+}
+
+#NetBankingSection{
+    margin-bottom: 15px;
+}

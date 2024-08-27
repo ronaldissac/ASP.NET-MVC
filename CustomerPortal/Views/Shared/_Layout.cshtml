@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Omega shipping</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="~/Css/Main.css" />
+</head>
+<body class="Body bg-body-secondary " style=" overflow:auto;">
+    <div class="bg-gradient row" style="background-color: mediumslateblue">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
+            <div class="container">
+                @Html.ActionLink("Omega Shipping", "Index", "Home", new { area = "" }, new { @class = "navbar-brand  ", @style = "color:whitesmoke" })
+
+                <div>
+                    <label class="text-white">
+                        Welcome @Session["customerName"]&nbsp;
+                        <img class="rounded" src="~/Image/Efiel.jpg" height="25" width="25" alt="Profile" />
+                    </label>
+                    @*@Html.RenderPartial("Profile");*@
+                    @*<label class="text-white" id="sessionCountdown">@HttpContext.Current.Session.Timeout min</label>*@
+                </div>
+            </div>
+        </nav>
+    </div>
+        <div class="row centered-nav">
+            <div class="col-sm-2"> @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-items nav-link", id = "home" })</div>
+            <div class="col-sm-2"> @Html.ActionLink("Export", "Export", "Home", new { area = "" }, new { @class = "nav-items nav-link", id = "Expt" })</div>
+            <ul class="nav-list" id="homeList" style="display: none;">
+                <li><a href="#">Booking</a></li>
+                <li><a href="=#">Invoice</a></li>
+                <li><a href="#">Receipt</a>
+                <li>
+                <li><a href="#">Bill Of Lading</a></li>
+            </ul>
+            <div class="col-sm-2"> @Html.ActionLink("Import", "Import", "Home", new { area = "" }, new { @class = "nav-items nav-link", id = "Impt" })</div>
+            <ul class="nav-list" id="ExportList" style="display:none">
+                <li><a href="#">Import</a></li>
+                <li><a href="=#">Invoice</a></li>
+                <li><a href="#">Receipt</a></li>
+                <li><a href="#">Bill Of Lading</a></li>
+            </ul>
+            <div class="col-sm-2"> @Html.ActionLink("Account", "Account", "Home", new { area = "" }, new { @class = "nav-items nav-link", id = "Acct" })</div>
+            <ul class="nav-list" id="ExportList" style="display:none">
+                <li><a href="#">Receipt Entry</a></li>
+                <li><a href="=#">Booking Report</a></li>
+                <li><a href="#">Invoice</a>
+                <li><a href="#">Bill Of Lading</a></li>
+            </ul>
+            <div class="col-sm-2"> @Html.ActionLink("Logout", "LogOut", "Login", new { area = "" }, new { @class = "nav-items nav-link", id = "logOut" })</div>
+        </div>
+    <br />
+        <main class="container Body-Content">
+            @RenderBody()
+        </main>
+    <div class="footer">
+        <footer>
+            <p>&copy; @DateTime.Now.Year Omega Shipping PVT. All rights are reserved.</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @*<script>
+        function updateSessionCountdown() {
+            var countdownElement = document.getElementById('sessionCountdown');
+            var sessionTimeoutMinutes = @Session["TimeOut"]; // Access session timeout directly from Session
+                countdownElement.innerText = 'Time left: ' + sessionTimeoutMinutes + ' min';
+
+
+                sessionTimeoutMinutes--;
+                setTimeout(update, 60000); // 60000 milliseconds = 1 minute
+            }
+
+            update();*@
+
+    @*// Call the function to start the countdown
+        updateSessionCountdown();
+        </script>*@
+
+    @section scripts {
+        <script>
+            $(document).ready(function () {
+                $(".nav-items").mouseover(function () {
+                    // Hide all lists
+                    $(".nav-list").stop().slideUp();
+
+                    // Show the corresponding list with slideDown animation
+                    var listId = $(this).attr("id") + "List";
+                    $("#" + listId).stop().slideDown();
+                });
+
+                $(".nav-items").mouseout(function () {
+                    // Hide the corresponding list with slideUp animation
+                    var listId = $(this).attr("id") + "List";
+                    $("#" + listId).stop().slideUp();
+                });
+            });
+        </script>
+    }
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿@model CustomerPortal.Models.Customer
+
+@{
+    Layout = null;
+}
+@if (TempData["Errormsg"] !=null)
+            {
+                <script>
+                    alert('@TempData["Errormsg"]');
+                </script>
+            }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CustomerLogin</title>
+    <link rel="stylesheet" href="~/Css/Login.css" />
+    <script src="~/Js Script/Login.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <a href="@Url.Action("CustomerLogin", "Login")">
+                <img src="~/Image/Logo.png" height="60" width="150" />
+            </a>
+        </div>
+        <div>
+            <h1>Omega Shipping Agency PVT LTD</h1>
+        </div>
+    </div>
+    @using (Html.BeginForm("CustomerLogin", "Login", FormMethod.Post, new { onsubmit = "return valid()" }))
+    {
+
+        <section id="formsContainer" class="container forms">
+            <div class="form login">
+                <div class="form-content">
+                    <header>Login</header>
+                        <div class="field input-field">
+                            @Html.TextBoxFor(model => model.CustomerId, new { @class = "input", id = "CustomerId", placeholder = "Customer ID", required = "required" })
+                        </div>
+                        <div class="field input-field">
+                            @Html.TextBoxFor(model => model.CustomerPassword, new { @class = "password",id= "CustomerPassword", @type = "password", placeholder = "Password", required = "required" })
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+                        <div class="form-link">
+                            @Html.ActionLink("New Customer? Register", "Register", "Login")
+                        </div>
+                        <div class="field button-field">
+                            <button type="submit" value="save">Login</button>
+                        </div>
+                </div>
+            </div>
+        </section>
+    }
+    
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f4ceee85b45a4190bf10c003d73a0577" Name="Diagram1">
+        <EntityTypeShape EntityType="omegabaseModel.AdminTable" Width="1.625" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="omegabaseModel.Booking" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="omegabaseModel.Bookingconfig" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="omegabaseModel.Customer" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="omegabaseModel.Export" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="omegabaseModel.Number" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="omegabaseModel.Product" Width="1.5" PointX="8.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="omegabaseModel.UserTable" Width="1.5" PointX="0.875" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="omegabaseModel.BookingconfigNumber" />
+        <AssociationConnector Association="omegabaseModel.CustomerBooking" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="omegabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'omegabase.dbo.BL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="BL">
+          <Property Name="Track" Type="nvarchar" MaxLength="16" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="FromLocation" Type="varchar(max)" />
+          <Property Name="ToLocation" Type="varchar(max)" />
+          <Property Name="Payment" Type="nvarchar(max)" />
+          <Property Name="Estimation" Type="int" />
+          <Property Name="Vessel" Type="nvarchar(max)" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="BLNumber" Type="nvarchar(max)" />
+          <Property Name="Amount" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="50" />
+          <Property Name="BookingRefNo" Type="varchar(max)" />
+          <Property Name="ShipperName" Type="nvarchar(max)" />
+          <Property Name="PlaceOfBooking" Type="int" />
+          <Property Name="Consignee" Type="nvarchar(max)" />
+          <Property Name="DateOfStacking" Type="nvarchar(max)" />
+          <Property Name="PlaceOfRec" Type="int" />
+          <Property Name="POD" Type="int" />
+          <Property Name="Voyage" Type="int" />
+          <Property Name="Vessel" Type="int" />
+          <Property Name="VesselOperator" Type="nvarchar(max)" />
+          <Property Name="PreCarriage" Type="int" />
+          <Property Name="DestCarriage" Type="int" />
+          <Property Name="TypeOfCargo" Type="int" />
+          <Property Name="Container" Type="int" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Commodity" Type="int" />
+          <Property Name="GrWt" Type="int" />
+          <Property Name="DateOfBooking" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Bookingconfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="seq" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPhone" Type="varchar" MaxLength="15" />
+          <Property Name="customerId" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerPassword" Type="varchar" MaxLength="50" />
+          <Property Name="LastLogin" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Export">
+          <Key>
+            <PropertyRef Name="Track" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="30" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="FromLocation" Type="varchar(max)" />
+          <Property Name="ToLocation" Type="varchar(max)" />
+          <Property Name="FileData" Type="varbinary(max)" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="30" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Track" Type="nvarchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'omegabase.dbo.Export_Status' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Export_Status">
+          <Property Name="FromLocation" Type="nvarchar(max)" />
+          <Property Name="ToLocation" Type="nvarchar(max)" />
+          <Property Name="Payment" Type="nvarchar(max)" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estimation" Type="int" />
+          <Property Name="Track" Type="nvarchar" MaxLength="16" />
+          <Property Name="Status" Type="nvarchar" MaxLength="30" />
+          <Property Name="vessel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Numbers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeofNumber" Type="varchar" MaxLength="30" />
+          <Property Name="SeqNo" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="int" Nullable="false" />
+          <Property Name="Pname" Type="varchar" MaxLength="50" />
+          <Property Name="Pdescription" Type="varchar" MaxLength="100" />
+          <Property Name="Prate" Type="int" />
+          <Property Name="PQuantity" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'omegabase.dbo.Export_Status' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Export_St__Track__70DDC3D8" />-->
+        <Function Name="add_export" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+          <Parameter Name="From" Type="nvarchar" Mode="In" />
+          <Parameter Name="To" Type="nvarchar" Mode="In" />
+          <Parameter Name="FileData" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="FileName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="AddExport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+          <Parameter Name="FromLocation" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ToLocation" Type="varchar(max)" Mode="In" />
+          <Parameter Name="FileData" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="FileName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Track" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetExportData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TrackID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetBkg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BookingRefNo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromLocation" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ToLocation" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Payment" Type="nvarchar" Mode="In" />
+          <Parameter Name="Location" Type="nvarchar" Mode="In" />
+          <Parameter Name="Estimation" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="TrackID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Vessel" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ValidateCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="customerid" Type="varchar" Mode="In" />
+          <Parameter Name="customerpass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ValidateLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserType" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="omegabaseModelStoreContainer">
+          <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bookingconfig" EntityType="Self.Bookingconfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Export" EntityType="Self.Export" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Numbers" EntityType="Self.Numbers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="omegabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookingRefNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ShipperName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceOfBooking" Type="Int32" />
+          <Property Name="Consignee" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfStacking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceOfRec" Type="Int32" />
+          <Property Name="POD" Type="Int32" />
+          <Property Name="Voyage" Type="Int32" />
+          <Property Name="Vessel" Type="Int32" />
+          <Property Name="VesselOperator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreCarriage" Type="Int32" />
+          <Property Name="DestCarriage" Type="Int32" />
+          <Property Name="TypeOfCargo" Type="Int32" />
+          <Property Name="Container" Type="Int32" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Commodity" Type="Int32" />
+          <Property Name="GrWt" Type="Int32" />
+          <Property Name="DateOfBooking" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="omegabaseModel.CustomerBooking" FromRole="Booking" ToRole="Customer" />
+          <Property Name="CustomerID1" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bookingconfig">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="seq" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Numbers" Relationship="omegabaseModel.BookingconfigNumber" FromRole="Bookingconfig" ToRole="Number" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="customerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bookings" Relationship="omegabaseModel.CustomerBooking" FromRole="Customer" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Export">
+          <Key>
+            <PropertyRef Name="Track" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="FromLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ToLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FileData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Track" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Number">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeofNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SeqNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bookingconfig" Relationship="omegabaseModel.BookingconfigNumber" FromRole="Number" ToRole="Bookingconfig" />
+          <Property Name="BookingconfigID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="Int32" Nullable="false" />
+          <Property Name="Pname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pdescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Prate" Type="Int32" />
+          <Property Name="PQuantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="omegabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="Bookingconfigs" EntityType="Self.Bookingconfig" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Exports" EntityType="Self.Export" />
+          <EntitySet Name="Numbers" EntityType="Self.Number" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <FunctionImport Name="add_export">
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="From" Mode="In" Type="String" />
+            <Parameter Name="To" Mode="In" Type="String" />
+            <Parameter Name="FileData" Mode="In" Type="Binary" />
+            <Parameter Name="FileName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddExport">
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="FromLocation" Mode="In" Type="String" />
+            <Parameter Name="ToLocation" Mode="In" Type="String" />
+            <Parameter Name="FileData" Mode="In" Type="Binary" />
+            <Parameter Name="FileName" Mode="In" Type="String" />
+            <Parameter Name="Track" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetExportData" ReturnType="Collection(omegabaseModel.GetExportData_Result)">
+            <Parameter Name="TrackID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetBkg" ReturnType="Collection(String)">
+            <Parameter Name="BookingRefNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Status" ReturnType="Collection(omegabaseModel.Update_Status_Result)">
+            <Parameter Name="FromLocation" Mode="In" Type="String" />
+            <Parameter Name="ToLocation" Mode="In" Type="String" />
+            <Parameter Name="Payment" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Estimation" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="TrackID" Mode="In" Type="String" />
+            <Parameter Name="Vessel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ValidateCustomer" ReturnType="Collection(omegabaseModel.ValidateCustomer_Result)">
+            <Parameter Name="customerid" Mode="In" Type="String" />
+            <Parameter Name="customerpass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ValidateLogin" ReturnType="Collection(omegabaseModel.ValidateLogin_Result)">
+            <Parameter Name="UserType" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <AssociationSet Name="BookingconfigNumber" Association="omegabaseModel.BookingconfigNumber">
+            <End Role="Bookingconfig" EntitySet="Bookingconfigs" />
+            <End Role="Number" EntitySet="Numbers" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerBooking" Association="omegabaseModel.CustomerBooking">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="GetExportData_Result">
+          <Property Type="String" Name="ProductName" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="FromLocation" Nullable="true" />
+          <Property Type="String" Name="ToLocation" Nullable="true" />
+          <Property Type="Binary" Name="FileData" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Update_Status_Result">
+          <Property Type="String" Name="Track" Nullable="true" MaxLength="16" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FromLocation" Nullable="true" />
+          <Property Type="String" Name="ToLocation" Nullable="true" />
+          <Property Type="String" Name="Payment" Nullable="true" />
+          <Property Type="Int32" Name="Estimation" Nullable="true" />
+          <Property Type="String" Name="Vessel" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BLNumber" Nullable="true" />
+          <Property Type="Int32" Name="Amount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ValidateCustomer_Result">
+          <Property Type="Boolean" Name="IsValid" Nullable="true" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HidID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ValidateLogin_Result">
+          <Property Type="String" Name="UserID" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="user_type" Nullable="false" MaxLength="5" />
+        </ComplexType>
+        <Association Name="BookingconfigNumber">
+          <End Type="omegabaseModel.Bookingconfig" Role="Bookingconfig" Multiplicity="1" />
+          <End Type="omegabaseModel.Number" Role="Number" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookingconfig">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Number">
+              <PropertyRef Name="BookingconfigID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerBooking">
+          <End Type="omegabaseModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="omegabaseModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="CustomerID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="omegabaseModelStoreContainer" CdmEntityContainer="omegabaseEntities">
+          <EntitySetMapping Name="AdminTables">
+            <EntityTypeMapping TypeName="omegabaseModel.AdminTable">
+              <MappingFragment StoreEntitySet="AdminTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="omegabaseModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="BookingRefNo" ColumnName="BookingRefNo" />
+                <ScalarProperty Name="ShipperName" ColumnName="ShipperName" />
+                <ScalarProperty Name="PlaceOfBooking" ColumnName="PlaceOfBooking" />
+                <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+                <ScalarProperty Name="DateOfStacking" ColumnName="DateOfStacking" />
+                <ScalarProperty Name="PlaceOfRec" ColumnName="PlaceOfRec" />
+                <ScalarProperty Name="POD" ColumnName="POD" />
+                <ScalarProperty Name="Voyage" ColumnName="Voyage" />
+                <ScalarProperty Name="Vessel" ColumnName="Vessel" />
+                <ScalarProperty Name="VesselOperator" ColumnName="VesselOperator" />
+                <ScalarProperty Name="PreCarriage" ColumnName="PreCarriage" />
+                <ScalarProperty Name="DestCarriage" ColumnName="DestCarriage" />
+                <ScalarProperty Name="TypeOfCargo" ColumnName="TypeOfCargo" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+                <ScalarProperty Name="GrWt" ColumnName="GrWt" />
+                <ScalarProperty Name="DateOfBooking" ColumnName="DateOfBooking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookingconfigs">
+            <EntityTypeMapping TypeName="omegabaseModel.Bookingconfig">
+              <MappingFragment StoreEntitySet="Bookingconfig">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="omegabaseModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exports">
+            <EntityTypeMapping TypeName="omegabaseModel.Export">
+              <MappingFragment StoreEntitySet="Export">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+                <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Track" ColumnName="Track" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Numbers">
+            <EntityTypeMapping TypeName="omegabaseModel.Number">
+              <MappingFragment StoreEntitySet="Numbers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TypeofNumber" ColumnName="TypeofNumber" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="omegabaseModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Pname" ColumnName="Pname" />
+                <ScalarProperty Name="Pdescription" ColumnName="Pdescription" />
+                <ScalarProperty Name="Prate" ColumnName="Prate" />
+                <ScalarProperty Name="PQuantity" ColumnName="PQuantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="omegabaseModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="add_export" FunctionName="omegabaseModel.Store.add_export" />
+          <FunctionImportMapping FunctionImportName="AddExport" FunctionName="omegabaseModel.Store.AddExport" />
+          <FunctionImportMapping FunctionImportName="GetExportData" FunctionName="omegabaseModel.Store.GetExportData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="omegabaseModel.GetExportData_Result">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+                <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetBkg" FunctionName="omegabaseModel.Store.spGetBkg" />
+          <FunctionImportMapping FunctionImportName="Update_Status" FunctionName="omegabaseModel.Store.Update_Status">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="omegabaseModel.Update_Status_Result">
+                <ScalarProperty Name="Track" ColumnName="Track" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+                <ScalarProperty Name="ToLocation" ColumnName="ToLocation" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="Estimation" ColumnName="Estimation" />
+                <ScalarProperty Name="Vessel" ColumnName="Vessel" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="BLNumber" ColumnName="BLNumber" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ValidateCustomer" FunctionName="omegabaseModel.Store.ValidateCustomer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="omegabaseModel.ValidateCustomer_Result">
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="HidID" ColumnName="HidID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ValidateLogin" FunctionName="omegabaseModel.Store.ValidateLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="omegabaseModel.ValidateLogin_Result">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="user_type" ColumnName="user_type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
